@@ -1,9 +1,18 @@
-import { SET_COLLECTION } from '../actionTypes';
+import { SET_COLLECTION, SET_COLLECTION_ELEMENT } from '../actionTypes';
 
-export const addProductCollection = (name, values) => ({
+export const setProductCollection = (name, values) => ({
   type: SET_COLLECTION,
   payload: {
     name,
   	values
+  }
+});
+
+export const setProductCollectionElement = (name, value, idAttr) => ({
+  type: SET_COLLECTION_ELEMENT,
+  payload: {
+    name,
+    value,
+    idAttr
   }
 });

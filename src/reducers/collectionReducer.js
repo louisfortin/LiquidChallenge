@@ -1,5 +1,6 @@
-import { RESET_COLLECTION, SET_COLLECTION } from '../actionTypes';
+import { RESET_COLLECTION, SET_COLLECTION, SET_COLLECTION_ELEMENT } from '../actionTypes';
 import { ARTICLES, WHISKEYS } from '../constants/productTypes';
+import { replaceOrAddCollectionElement } from './index';
 
 export const initialCollectionState = [];
 
@@ -19,6 +20,13 @@ const collectionReducer = (state = initialState, action) => {
       return {
         ...state,
         [name]: [ ...values ]
+      };
+    }
+    case SET_COLLECTION_ELEMENT: {
+      const { name, value, idAttr } = action.payload;
+      return {
+        ...state,
+        [name]: replaceOrAddCollectionElement(state[name], value, idAttr)
       };
     }
     case RESET_COLLECTION: {

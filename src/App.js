@@ -6,8 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 // components
-import ReactApp from './components/ReactApp';
 import Home from './components/Home';
+import ReactApp from './components/ReactApp';
+import WhiskeyContainer from './components/WhiskeyContainer';
 
 const App = () => {
   return (
@@ -24,8 +25,11 @@ const App = () => {
           <Route exact path="/thank-you">
             <ReactApp />
           </Route>
+          <Route exact path="/whiskey/:id" render={({ match: { params: { id }}} ) => (
+            <WhiskeyContainer id={id} />
+          )} />
           <Route>
-            <Home />
+            <Redirect to="/home" />
           </Route>
         </Switch>
     </Router>

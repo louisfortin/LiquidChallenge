@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -6,6 +7,8 @@ import styled from 'styled-components';
 import { getArticles, getWhiskeys } from '../actions/productActions';
 // selectors
 import { selectArticles, selectWhiskeys } from '../selectors/productSelectors';
+// components
+import WhiskeyListItem from './WhiskeyListItem';
 
 const App = styled('div')`
 	text-align: center;
@@ -19,9 +22,15 @@ class Home extends Component {
 	}
 
 	render = () => {
+		const { whiskeys } = this.props;
 		return (
 			<App>
-				List of whiskeys
+				<p>Whiskey Selection</p>
+				{whiskeys.map((whiskey) => (
+					<NavLink key={whiskey.title} to={`/whiskey/${whiskey.title}`}>
+						<WhiskeyListItem whiskey={whiskey} />
+					</NavLink>
+				))}
 			</App>
 		)
 	}
