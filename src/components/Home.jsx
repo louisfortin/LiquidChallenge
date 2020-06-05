@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 // actions
 import { getArticles, getWhiskeys } from '../actions/productActions';
 // selectors

@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components';
 import logo from '../assets/logo.svg';
-import './ReactApp.css';
 
 const App = styled('div')`
 	text-align: center;
@@ -17,9 +16,22 @@ const AppHeader = styled('header')`
 	color: white;
 `
 
+const reactLogoAnimation = keyframes`
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+`;
+
 const ReactLogo = styled('img')`
 	height: 40vmin;
 	pointer-events: none;
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: ${reactLogoAnimation} infinite 20s linear;
+	}
 `;
 
 const AppLink = styled('a')`
