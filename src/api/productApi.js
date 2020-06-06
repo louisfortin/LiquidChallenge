@@ -5,8 +5,12 @@ import whiskeys from '../data/whiskies.json';
 // mock data
 // fake it's fetched from regular back-end
 
-export const fetchWhiskeys = () => new Promise((resolve) => {
-	setTimeout(() => resolve([ ...whiskeys ]), 300)
+export const fetchWhiskeys = (filter) => new Promise((resolve) => {
+	setTimeout(() => resolve(
+		[ ...whiskeys.filter((whiskey) => (
+			!filter.region || whiskey.region === filter.region
+		))]
+	), 300)
 });
 
 export const fetchWhiskey = id => new Promise((resolve) => {

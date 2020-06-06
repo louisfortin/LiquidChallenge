@@ -11,6 +11,8 @@ import Whiskey from './Whiskey';
 // constants
 import background from '../constants/regionColors';
 
+import { FaCartPlus } from 'react-icons/fa';
+
 const Container = styled('div')`
 	width: 80%;
 	margin: auto;
@@ -33,6 +35,10 @@ const CartButton = styled('div')`
 	align-items: center;
 	cursor: pointer;
 	color: white;
+
+	span {
+		margin-right: 10px;
+	}
 `;
 
 const addToCart = (whiskey) => {
@@ -52,7 +58,13 @@ class WhiskeyContainer extends Component {
 				{whiskey && (
 					<>
 						<Whiskey whiskey={whiskey} />
-						<CartButton onClick={() => addToCart(whiskey)} region={whiskey.region}>Add to cart</CartButton>
+						<CartButton
+							onClick={() => addToCart(whiskey)}
+							region={whiskey.region}
+						>
+							<span>Add to cart</span>
+							<FaCartPlus />
+						</CartButton>
 					</>
 				)}
 			</Container>

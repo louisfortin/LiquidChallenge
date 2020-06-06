@@ -8,7 +8,15 @@ import { getArticles, getWhiskeys } from '../actions/productActions';
 // selectors
 import { selectArticles, selectWhiskeys } from '../selectors/productSelectors';
 // components
+import RegionList from './RegionList';
 import WhiskeyListItem from './WhiskeyListItem';
+
+const Title = styled('h1')`
+	color: black;
+	text-transform: uppercase;
+	margin-bottom: 50px;
+	font-size: 56px;
+`;
 
 const HomeContainer = styled('div')`
 	text-align: center;
@@ -26,17 +34,31 @@ const WhiskeyList = styled('div')`
 `;
 
 class Home extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			region: ''
+		}
+	};
+
 	componentDidMount = () => {
 		const { getArticles, getWhiskeys } = this.props;
 		getArticles();
-		getWhiskeys();
-	}
+		getWhiskeys({ region: null });
+	};
+
+	filter = (region) => {
+		this.props.getWhiskeys({ region });
+		this.setState({ region });
+	};
 
 	render = () => {
 		const { whiskeys } = this.props;
+		const { region } = this.state;
 		return (
 			<HomeContainer>
-				<p>Whiskey Selection</p>
+				<Title>Whiskey Selection</Title>
+				<RegionList onClick={this.filter} region={region} />
 				<WhiskeyList>
 					{whiskeys.map((whiskey) => (
 						<NavItem key={whiskey.title} to={`/whiskey${whiskey.uri}`}>
@@ -63,7 +85,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	getArticles: () => dispatch(getArticles()),
-	getWhiskeys: () => dispatch(getWhiskeys())
+	getWhiskeys: (filter) => dispatch(getWhiskeys(filter))
 });
 
 export default connect(mapState, mapDispatch)(Home);

@@ -5,7 +5,7 @@ import { fetchArticles, fetchWhiskey, fetchWhiskeys } from '../api/productApi';
 export const getArticles = () => dispatch => fetchArticles()
   .then((data) => dispatch(setProductCollection(ARTICLES, data)));
 
-export const getWhiskeys = () => dispatch => fetchWhiskeys()
+export const getWhiskeys = (filter) => dispatch => fetchWhiskeys(filter)
   .then((data) => dispatch(setProductCollection(WHISKEYS, data)));
 
 export const getWhiskey = id => dispatch => fetchWhiskey(id)
