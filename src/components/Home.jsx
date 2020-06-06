@@ -20,17 +20,62 @@ const Title = styled('h1')`
 
 const HomeContainer = styled('div')`
 	text-align: center;
+	width: 90%;
+	margin: auto;
 `;
 
 const NavItem = styled(NavLink)`
 	min-width: 500px;
-	width: 30%;
+	width: 27%;
 `;
 
 const WhiskeyList = styled('div')`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+`;
+
+
+const Articles = styled('div')`
+	margin: 50px 0;
+`;
+
+const Article = styled('a')`
+	position: relative;
+	display:inline-block;
+
+	img {
+		width: 100%;
+		filter: brightness(50%);
+	}
+`;
+
+const ArticleContent = styled('div')`
+	width: 50%
+	height: 90%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 100px;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	justify-content: flex-end;
+	overflow:auto; 
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 36px;
+		font-weight: bold;
+		margin: 0;
+	}
+	p {
+		font-size: 18px;
+		font-weight: regular;
+		margin: 0;
+	}
 `;
 
 class Home extends Component {
@@ -44,7 +89,7 @@ class Home extends Component {
 	componentDidMount = () => {
 		const { getArticles, getWhiskeys } = this.props;
 		getArticles();
-		getWhiskeys({ region: null });
+		getWhiskeys({ region: '' });
 	};
 
 	filter = (region) => {
@@ -53,7 +98,7 @@ class Home extends Component {
 	};
 
 	render = () => {
-		const { whiskeys } = this.props;
+		const { articles, whiskeys } = this.props;
 		const { region } = this.state;
 		return (
 			<HomeContainer>
@@ -61,11 +106,30 @@ class Home extends Component {
 				<RegionList onClick={this.filter} region={region} />
 				<WhiskeyList>
 					{whiskeys.map((whiskey) => (
-						<NavItem key={whiskey.title} to={`/whiskey${whiskey.uri}`}>
+						<NavItem
+							key={`whiskey-${whiskey.title}`}
+							to={`/whiskey${whiskey.uri}`}
+						>
 							<WhiskeyListItem whiskey={whiskey} />
 						</NavItem>
 					))}
 				</WhiskeyList>
+				<Articles>
+					{articles.map((article) => (
+						<Article
+							key={`article-${article.title}`}
+							href={article.url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<img src={require(`../assets/${article.img}`)} />
+							<ArticleContent>
+								<h2>{article.title}</h2>
+								<p>{article.teaser}</p>
+							</ArticleContent>
+						</Article>
+					))}
+				</Articles>
 			</HomeContainer>
 		)
 	}

@@ -24,7 +24,7 @@ const RegionList = ({ onClick, region }) => (
 	<Regions>
 		{regions.map((r) => (
 			<CheckBoxItem
-				key={r.value}
+				key={`checkbox-${r.value}`}
 				onClick={onClick}
 				region={r}
 				selected={region}
