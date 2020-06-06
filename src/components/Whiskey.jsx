@@ -16,6 +16,7 @@ const Product = styled('div')`
 	height: 544px;
 	background-color: #2a2a2a;
 	background-image: url(${background});
+	border-radius: 5px;
 `;
 
 const ProductInfo = styled('div')`
