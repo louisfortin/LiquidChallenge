@@ -4,8 +4,10 @@ import styled from 'styled-components';
 // components
 import Whiskey from './Whiskey';
 
-const App = styled('div')`
-	text-align: center;
+const Item = styled('div')`
+	width: 100%;
+	margin: 30px;
+	display: inline-block;
 `;
 
 class WhiskeyListItem extends Component {
@@ -14,9 +16,9 @@ class WhiskeyListItem extends Component {
 		return (
 			<>
 				{whiskey && (
-					<App>
+					<Item>
 						<Whiskey whiskey={whiskey} />
-					</App>
+					</Item>
 				)}
 			</>
 		)

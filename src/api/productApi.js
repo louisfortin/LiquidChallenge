@@ -10,7 +10,7 @@ export const fetchWhiskeys = () => new Promise((resolve) => {
 });
 
 export const fetchWhiskey = id => new Promise((resolve) => {
-	setTimeout(() => resolve(whiskeys.find((w => w.title === id))), 300)
+	setTimeout(() => resolve(whiskeys.find((w => w.title.toLowerCase() === id))), 300)
 });
 
 export const fetchArticles = () => new Promise((resolve) => {

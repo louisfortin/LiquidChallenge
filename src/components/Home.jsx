@@ -10,8 +10,19 @@ import { selectArticles, selectWhiskeys } from '../selectors/productSelectors';
 // components
 import WhiskeyListItem from './WhiskeyListItem';
 
-const App = styled('div')`
+const HomeContainer = styled('div')`
 	text-align: center;
+`;
+
+const NavItem = styled(NavLink)`
+	min-width: 500px;
+	width: 30%;
+`;
+
+const WhiskeyList = styled('div')`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 `;
 
 class Home extends Component {
@@ -24,14 +35,16 @@ class Home extends Component {
 	render = () => {
 		const { whiskeys } = this.props;
 		return (
-			<App>
+			<HomeContainer>
 				<p>Whiskey Selection</p>
-				{whiskeys.map((whiskey) => (
-					<NavLink key={whiskey.title} to={`/whiskey/${whiskey.title}`}>
-						<WhiskeyListItem whiskey={whiskey} />
-					</NavLink>
-				))}
-			</App>
+				<WhiskeyList>
+					{whiskeys.map((whiskey) => (
+						<NavItem key={whiskey.title} to={`/whiskey${whiskey.uri}`}>
+							<WhiskeyListItem whiskey={whiskey} />
+						</NavItem>
+					))}
+				</WhiskeyList>
+			</HomeContainer>
 		)
 	}
 };

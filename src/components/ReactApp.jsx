@@ -53,7 +53,7 @@ const ReactApp = () => (
 				<span> thank you for this tool !</span>
 				
 			</p>
-			<ReactLogo className="react-logo" src={logo} alt="logo" />
+			<ReactLogo src={logo} alt="logo" />
 			<p>
 				Edit <code>src/App.js</code> and save to reload.
 			</p>
