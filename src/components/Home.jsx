@@ -31,7 +31,8 @@ const WhiskeyList = styled('div')`
 `;
 
 const NavItem = styled(NavLink)`
-	min-width: 450px;
+	min-width: 400px;
+	max-width: 450px;
 	margin: 30px;
 	display: inline-block;
 	text-decoration:none;
