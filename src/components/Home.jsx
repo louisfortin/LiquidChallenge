@@ -9,19 +9,19 @@ import { getArticles, getWhiskeys } from '../actions/productActions';
 import { selectArticles, selectWhiskeys } from '../selectors/productSelectors';
 // components
 import RegionList from './RegionList';
-import WhiskeyListItem from './WhiskeyListItem';
-
-const Title = styled('h1')`
-	color: black;
-	text-transform: uppercase;
-	margin-bottom: 50px;
-	font-size: 56px;
-`;
+import Whiskey from './Whiskey';
 
 const HomeContainer = styled('div')`
 	text-align: center;
 	width: 90%;
 	margin: auto;
+
+	h1 {
+		color: black;
+		text-transform: uppercase;
+		margin-bottom: 50px;
+		font-size: 56px;
+	}
 `;
 
 const WhiskeyList = styled('div')`
@@ -33,11 +33,12 @@ const WhiskeyList = styled('div')`
 const NavItem = styled(NavLink)`
 	min-width: 450px;
 	margin: 30px;
+	display: inline-block;
+	text-decoration:none;
 `;
 
-
 const Articles = styled('div')`
-	margin: 50px 0;
+	margin: 50px 30px;
 `;
 
 const Article = styled('a')`
@@ -102,7 +103,7 @@ class Home extends Component {
 		const { region } = this.state;
 		return (
 			<HomeContainer>
-				<Title>Whiskey Selection</Title>
+				<h1>Whiskey Selection</h1>
 				<RegionList onClick={this.filter} region={region} />
 				<WhiskeyList>
 					{whiskeys.map((whiskey) => (
@@ -110,7 +111,7 @@ class Home extends Component {
 							key={`whiskey-${whiskey.title}`}
 							to={whiskey.uri}
 						>
-							<WhiskeyListItem whiskey={whiskey} />
+							<Whiskey whiskey={whiskey} />
 						</NavItem>
 					))}
 				</WhiskeyList>

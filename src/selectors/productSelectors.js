@@ -1,5 +1,7 @@
 import { ARTICLES, WHISKEYS } from '../constants/productTypes';
 
+export const productLoader = (state) => state.collections.loader;
+
 export const selectWhiskeys = (state) => state.collections[WHISKEYS];
 export const selectWhiskey = (state, id) => state.collections[WHISKEYS]
 	.find((whiskey) => whiskey && whiskey.title.toLowerCase() === id);

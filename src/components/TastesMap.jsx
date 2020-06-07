@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import background from '../constants/regionColors';
@@ -10,7 +10,11 @@ const TastePanel = styled('div')`
 	height: 60px;
 	width: 100%;
 	margin: 0 0 36px -60px;
-	background: ${({ region }) => `linear-gradient(to right, ${background[region].from}, ${background[region].to})`};
+	background: ${({ region }) => `linear-gradient(
+		to right,
+		${background[region].from},
+		${background[region].to}
+	)`};
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
@@ -36,20 +40,15 @@ const TasteElements = styled('span')`
 	}
 `;
 
-class TasteMap extends Component {
-	render = () => {
-		const { region, tastes } = this.props;
-		return (
-			<TastePanel region={region}>
-				<TasteElements>
-					{tastes.map((taste) => (
-						<span key={`taste-${taste}`}>{taste}</span>
-					))}
-				</TasteElements>
-			</TastePanel>
-		)
-	}
-};
+const TasteMap = ({ region, tastes }) => (
+	<TastePanel region={region}>
+		<TasteElements>
+			{tastes.map((taste) => (
+				<span key={`taste-${taste}`}>{taste}</span>
+			))}
+		</TasteElements>
+	</TastePanel>
+);
 
 TasteMap.propTypes = {
 	region: PropTypes.string.isRequired,

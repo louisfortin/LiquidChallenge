@@ -6,8 +6,8 @@ const Item = styled('div')`
 		display: none;
 	}
 
-	.checkbox-tools:checked + label,
-	.checkbox-tools:not(:checked) + label{
+	.checkbox-item:checked + label,
+	.checkbox-item:not(:checked) + label{
 		position: relative;
 		display: inline-block;
 		padding: 20px;
@@ -26,12 +26,12 @@ const Item = styled('div')`
 		-webkit-transition: all 300ms linear;
 		transition: all 300ms linear; 
 	}
-	.checkbox-tools:not(:checked) + label{
+	.checkbox-item:not(:checked) + label{
 		background-color: white;
 		color: #777777;
 		border: 3px solid #d6d6d6;
 	}
-	.checkbox-tools:checked + label{
+	.checkbox-item:checked + label{
 		background-color: #f3f3f3;
 		color: black;
 		border: 3px solid #777777
@@ -46,10 +46,12 @@ const CheckBoxItem = ({ onClick, region, selected }) => (
 			name="region"
 			value={region.value}
 			checked={region.value === selected}
-			className="checkbox-tools"
+			className="checkbox-item"
 			readOnly
 		/>
-		<label htmlFor={region.value} className="for-checkbox-tools">{region.label}</label>
+		<label htmlFor={region.value} className="for-checkbox-item">
+			{region.label}
+		</label>
 	</Item>
 );
 

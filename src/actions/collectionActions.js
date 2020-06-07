@@ -1,4 +1,8 @@
-import { SET_COLLECTION, SET_COLLECTION_ELEMENT } from '../actionTypes';
+import { FETCH_COLLECTION, SET_COLLECTION, SET_COLLECTION_ELEMENT } from '../actionTypes';
+
+export const fetchProducts = () => ({
+  type: FETCH_COLLECTION
+})
 
 export const setProductCollection = (name, values) => ({
   type: SET_COLLECTION,
