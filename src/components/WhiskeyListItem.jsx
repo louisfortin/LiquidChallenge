@@ -6,7 +6,6 @@ import Whiskey from './Whiskey';
 
 const Item = styled('div')`
 	width: 100%;
-	margin: 30px;
 	display: inline-block;
 `;
 

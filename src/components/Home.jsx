@@ -24,15 +24,15 @@ const HomeContainer = styled('div')`
 	margin: auto;
 `;
 
-const NavItem = styled(NavLink)`
-	min-width: 500px;
-	width: 27%;
-`;
-
 const WhiskeyList = styled('div')`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+`;
+
+const NavItem = styled(NavLink)`
+	min-width: 450px;
+	margin: 30px;
 `;
 
 
@@ -108,7 +108,7 @@ class Home extends Component {
 					{whiskeys.map((whiskey) => (
 						<NavItem
 							key={`whiskey-${whiskey.title}`}
-							to={`/whiskey${whiskey.uri}`}
+							to={whiskey.uri}
 						>
 							<WhiskeyListItem whiskey={whiskey} />
 						</NavItem>

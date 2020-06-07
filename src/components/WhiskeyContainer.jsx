@@ -14,12 +14,12 @@ import background from '../constants/regionColors';
 import { FaCartPlus } from 'react-icons/fa';
 
 const Container = styled('div')`
-	width: 80%;
-	margin: auto;
-	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
 
 	div {
 		width: 100%;
@@ -28,18 +28,20 @@ const Container = styled('div')`
 `;
 
 const CartButton = styled('button')`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 25%;
-	margin: 50px auto;
+	max-width: 250px;
+	height: 50px;
 	background: ${({region}) => `linear-gradient(
 		to right,
 		${background[region].from},
 		${background[region].to}
 	)`};
+	border: 0px;
 	border-radius: 10px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	margin: 50px auto;
 	cursor: pointer;
 	color: white;
 
@@ -62,17 +64,15 @@ class WhiskeyContainer extends Component {
 		const { whiskey } = this.props;
 		return (
 			<Container>
+				<Whiskey whiskey={whiskey} />
 				{whiskey && (
-					<>
-						<Whiskey whiskey={whiskey} />
-						<CartButton
-							onClick={() => addToCart(whiskey)}
-							region={whiskey.region}
-						>
-							<span>Add to cart</span>
-							<FaCartPlus />
-						</CartButton>
-					</>
+					<CartButton
+						onClick={() => addToCart(whiskey)}
+						region={whiskey.region}
+					>
+						<span>Add to cart</span>
+						<FaCartPlus />
+					</CartButton>
 				)}
 			</Container>
 		)

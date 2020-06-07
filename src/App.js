@@ -25,7 +25,7 @@ const App = () => {
           <Route exact path="/thank-you">
             <ReactApp />
           </Route>
-          <Route exact path="/whiskey/:id" render={({ match: { params: { id }}} ) => (
+          <Route exact path="/:id" render={({ match: { params: { id }}} ) => (
             <WhiskeyContainer id={id} />
           )} />
           <Route>

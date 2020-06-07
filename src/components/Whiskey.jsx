@@ -9,6 +9,11 @@ import colors from '../constants/regionColors';
 
 const Article = styled('div')`
 	position: relative;
+	h2 {
+		font-weight: bold;
+		font-size: 36px;
+		color: white;
+	}
 `;
 
 const Product = styled('div')`
@@ -29,11 +34,6 @@ const ProductInfo = styled('div')`
 	justify-content: flex-end;
 	text-transform: capitalize;
 
-	h2 {
-		font-weight: bold;
-		font-size: 36px;
-		color: white;
-	}
 	p {
 		margin-top: -5px;
 		font-weight: regular;
@@ -41,6 +41,25 @@ const ProductInfo = styled('div')`
 		color: #6c6b6a;
 	}
 `;
+
+const NotFoundPage = styled('div')`
+	text-align: left;
+	color: white;
+	margin: 0 0 40% 36px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+
+	span {
+		font-weight: regular;
+		font-size: 18px;
+		color: white;
+
+		a {
+			color: white
+		}
+	}
+`
 
 const ProductImage = styled('img')`
 	min-width: 160px;
@@ -82,26 +101,34 @@ const price = (value) => new Intl.NumberFormat("en-US", {
 
 class Whiskey extends Component {
 	render = () => {
-		const { whiskey: { image, title, region, cost, tasting_notes }} = this.props;
+		const { whiskey } = this.props;
 		return (
-			<>
-				{title && (
-					<Article>
-						<Product>
+			<Article>
+				<Product>
+					{whiskey && (
+						<>
 							<ProductInfo>
-								<h2>{title}</h2>
-								<p>{region} region</p>
-								<h2>{price(cost)}</h2>
-								<TasteMap region={region} tastes={tasting_notes} />
+								<h2>{whiskey.title}</h2>
+								<p>{whiskey.region} region</p>
+								<h2>{price(whiskey.cost)}</h2>
+								<TasteMap region={whiskey.region} tastes={whiskey.tasting_notes} />
 							</ProductInfo>
-								<ProductImage src={require(`../assets/${image}`)} />
-						</Product>
-						<MarkContainer>
-							<RegionMark region={region} />
-						</MarkContainer>
-					</Article>
+							<ProductImage src={require(`../assets/${whiskey.image}`)} />
+						</>
+					)}
+					{!whiskey && (
+						<NotFoundPage>
+							<h2>Sorry, this product doesn't exist !</h2>
+							<span>Go back to the <a href="/home">main page</a></span> 
+						</NotFoundPage>
+					)}
+				</Product>
+				{whiskey && (
+					<MarkContainer>
+						<RegionMark region={whiskey.region} />
+					</MarkContainer>
 				)}
-			</>
+			</Article>
 		)
 	}
 };
