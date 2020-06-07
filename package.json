@@ -12,11 +12,16 @@
     "react-icons": "^3.10.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.4.1"
+  },
+  "resolutions": {
+    "http-proxy": "1.18.1",
+    "minimist": "1.2.5",
+    "yargs-parser": "18.1.2"
   },
   "scripts": {
     "start": "PORT=2020 react-scripts start",
