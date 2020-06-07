@@ -122,7 +122,10 @@ class Home extends Component {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<img src={require(`../assets/${article.img}`)} />
+							<img
+								src={require(`../assets/${article.img}`)}
+								alt={article.title}
+							/>
 							<ArticleContent>
 								<h2>{article.title}</h2>
 								<p>{article.teaser}</p>

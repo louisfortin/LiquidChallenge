@@ -17,17 +17,24 @@ const Container = styled('div')`
 	width: 80%;
 	margin: auto;
 	margin-top: 20px;
-	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 	div {
-		background-attachment: fixed;
-		background-repeat: no-repeat;
+		width: 100%;
+		max-width: 600px;
 	}
 `;
 
-const CartButton = styled('div')`
+const CartButton = styled('button')`
 	width: 25%;
 	margin: 50px auto;
-	background: ${({region}) => `linear-gradient(to right, ${background[region].from}, ${background[region].to})`};
+	background: ${({region}) => `linear-gradient(
+		to right,
+		${background[region].from},
+		${background[region].to}
+	)`};
 	border-radius: 10px;
 	height: 50px;
 	display: flex;
@@ -41,9 +48,9 @@ const CartButton = styled('div')`
 	}
 `;
 
-const addToCart = (whiskey) => {
-	alert(`You will be soon able to add this bottle of ${whiskey.title} in your cart. Stay tuned for the future releases !`)
-}
+const addToCart = (whiskey) => alert(
+	`You will be soon able to add this bottle of ${whiskey.title} in your cart. Stay tuned for the future releases !`
+);
 
 class WhiskeyContainer extends Component {
 	componentDidMount = () => {

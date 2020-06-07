@@ -46,8 +46,8 @@ const CheckBoxItem = ({ onClick, region, selected }) => (
 			name="region"
 			value={region.value}
 			checked={region.value === selected}
-			onChange={() => {}}
 			className="checkbox-tools"
+			readOnly
 		/>
 		<label htmlFor={region.value} className="for-checkbox-tools">{region.label}</label>
 	</Item>

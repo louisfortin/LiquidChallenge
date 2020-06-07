@@ -43,7 +43,7 @@ class TasteMap extends Component {
 			<TastePanel region={region}>
 				<TasteElements>
 					{tastes.map((taste) => (
-						<span key={`taste-${taste}`} key={taste}>{taste}</span>
+						<span key={`taste-${taste}`}>{taste}</span>
 					))}
 				</TasteElements>
 			</TastePanel>

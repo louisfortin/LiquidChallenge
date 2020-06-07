@@ -23,7 +23,7 @@ const ProductInfo = styled('div')`
 	text-align: left;
 	color: white;
 	margin: 0 36px;
-	min-width: 300px;
+	min-width: 250px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
